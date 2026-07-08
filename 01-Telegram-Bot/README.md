@@ -8,6 +8,14 @@
 
 ### 💡 Tip
 This workflow is deliberately kept simple. Its main purpose is to demonstrate how to manage incoming HTTP webhook requests and how to securely configure and handle API credentials with Telegram and external LLMs.
+## Waht is learned from this project 
 
+Through this project, we learned:
+- How Telegram webhooks work.
+- How to connect external APIs with n8n.
+- How AI Agents use LLM models.
+- How to manage credentials securely in n8n.
+- How to create simple AI automation workflows.
+- 
 ### Due to security reasons, some sensitive data has been removed from the workflow.json file.
 Thank you!
