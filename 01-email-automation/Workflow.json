@@ -1,0 +1,167 @@
+{
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "contact us",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "what is your name ?"
+            },
+            {
+              "fieldLabel": "what is your country ?"
+            },
+            {
+              "fieldLabel": "enter your email "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        -16,
+        -96
+      ],
+      "id": "7881ace4-91f0-4dd2-9307-18eb7a4ab2bf",
+      "name": "On form submission",
+      "webhookId": "fcc63157-3877-49b4-aa53-1a1773ff9a91"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.Email }}",
+        "subject": "about the form",
+        "emailType": "text",
+        "message": "thanks,we w'll get you soon!",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        496,
+        -96
+      ],
+      "id": "8b0dc2c2-ef4b-4578-a6e0-e14cd14b1dab",
+      "name": "Send a message",
+      "webhookId": "85ab834f-5595-4f94-a70e-91efe9e59254",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "DU6Kf0mnSwwPRpn6",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1vK3OyG5YMMurm0cmUMBBRcfKFAqsNWUEJ0HQS8JBbII",
+          "mode": "list",
+          "cachedResultName": "sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1vK3OyG5YMMurm0cmUMBBRcfKFAqsNWUEJ0HQS8JBbII/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1vK3OyG5YMMurm0cmUMBBRcfKFAqsNWUEJ0HQS8JBbII/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json['what is your name ?'] }}",
+            "Country": "={{ $json['what is your country ?'] }}",
+            "Email": "={{ $json['enter your email '] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Country",
+              "displayName": "Country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        192,
+        -96
+      ],
+      "id": "17830960-38d3-4ec3-892c-5a4aae86c387",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "VyejWRbHfnDT3Esy",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "60fe7a05-a473-4acc-8cf8-51f6ccb3a213",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9a07ec676bd37633423090822a51714f25f6b939d605af9ca76fbe86012d6be4"
+  },
+  "nodeGroups": [],
+  "id": "dnY3QmWhTszzmT7r",
+  "tags": []
+}
