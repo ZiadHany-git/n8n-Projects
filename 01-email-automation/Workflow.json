@@ -58,14 +58,14 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "1vK3OyG5YMMurm0cmUMBBRcfKFAqsNWUEJ0HQS8JBbII",
+          "value": "1vK3OyG5",
           "mode": "list",
           "cachedResultName": "sheet1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1vK3OyG5YMMurm0cmUMBBRcfKFAqsNWUEJ0HQS8JBbII/edit?usp=drivesdk"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/"
         },
         "sheetName": {
           "__rl": true,
-          "value": "https://docs.google.com/spreadsheets/d/1vK3OyG5YMMurm0cmUMBBRcfKFAqsNWUEJ0HQS8JBbII/edit?gid=0#gid=0",
+          "value": "the sheet url",
           "mode": "url"
         },
         "columns": {
