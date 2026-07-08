@@ -4,4 +4,4 @@
 
 -after that the message is used an an input to an AI agent node the prompet is in Workflow.json
 
--
+>[I am using n8n on Docker so I used ngrok to create a tunnel so telegram can communicate with my n8n account ]
