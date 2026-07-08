@@ -1,5 +1,5 @@
 {
-  "name": "My workflow 3",
+  "name": "My workflow",
   "nodes": [
     {
       "parameters": {
@@ -49,10 +49,10 @@
       ],
       "id": "3b41892d-1c14-47bd-b9b8-f3d2c5dda2d5",
       "name": "Send a text message",
-      "webhookId": "091afb6d-b5b3-4bad-8642-c429ea3357c1",
+      "webhookId": "YOUR_WEBHOOK_ID",
       "credentials": {
         "telegramApi": {
-          "id": "JIUxuyCkKSBAillI",
+          "id": "JISBAillI",
           "name": "Telegram account"
         }
       }
@@ -72,10 +72,10 @@
       ],
       "id": "30a1f980-00fd-451b-9aec-5ea6ba64ce56",
       "name": "Telegram Trigger",
-      "webhookId": "b7d63ceb-a99e-49b5-8fd6-bdec2e367916",
+      "webhookId": "YOUR_WEBHOOK_ID",
       "credentials": {
         "telegramApi": {
-          "id": "JIUxuyCkKSBAillI",
+          "id": "JIUAillI",
           "name": "Telegram account"
         }
       }
@@ -126,9 +126,9 @@
   "versionId": "19db381a-14da-455d-b263-eb204cfa460e",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "9a07ec676bd37633423090822a51714f25f6b939d605af9ca76fbe86012d6be4"
+   
   },
   "nodeGroups": [],
-  "id": "SJZTsSKsNa6rYhFf",
+  "id": "   ",
   "tags": []
 }
