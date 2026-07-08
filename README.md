@@ -7,4 +7,4 @@ A collection of beginner automation projects built while learning n8n.
 | # | Project | Status |
 |---|---------|--------|
 | 01 | Email Automation | ✅ |
-
+| 02 | telegram | ✅ |
