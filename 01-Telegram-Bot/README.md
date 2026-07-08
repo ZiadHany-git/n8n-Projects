@@ -9,4 +9,5 @@
 ### 💡 Tip
 This workflow is deliberately kept simple. Its main purpose is to demonstrate how to manage incoming HTTP webhook requests and how to securely configure and handle API credentials with Telegram and external LLMs.
 
+### Due to security reasons, some sensitive data has been removed from the workflow.json file.
 Thank you!
