@@ -1,16 +1,12 @@
-# Telegram bot using n8n and Gemini 
+### Telegram Bot Using n8n and Gemini
 
--In this simple work flow i used the Telegram trigger node to start that flow after receving a message
+- In this simple workflow, I used the **Telegram Trigger** node to start the flow immediately after receiving a message.
+- After that, the incoming message is used as an input for the **AI Agent** node (the system prompt can be found inside `Workflow.json`).
+- *Note: Since I am hosting n8n locally via Docker, I used **ngrok** to create a secure tunnel so Telegram can communicate with my local n8n instance via webhooks.*
+- Then, the message payload is sent to **Gemini-1.5-Flash** (the core LLM utilized in this workflow) to generate the text response.
+- Finally, the response is sent back to the user using the **Send a Text Message** node, dynamically utilizing the user's specific **Chat ID**.
 
--after that the message is used an an input to an AI agent node the prompet is in Workflow.json
+### 💡 Tip
+This workflow is deliberately kept simple. Its main purpose is to demonstrate how to manage incoming HTTP webhook requests and how to securely configure and handle API credentials with Telegram and external LLMs.
 
->[I am using n8n on Docker so I used ngrok to create a tunnel so telegram can communicate with my n8n account ]
-
--Then the message is sent to Gemini-3-flash {the LLM in this workflow } .
-
--The respond is sent using sent a text message noe  to the account using it's chat id .
-
- >[!TIP]
->This workflow is so simple and the porpuse from it is to demonstrate how to deal with http requests and use the Credential with telegram
-
-## Thank you !
+Thank you!
