@@ -1,21 +1,32 @@
-# RSS News Automation 
--This workflow used for reading news from xml files like https://feeds.bbci.co.uk/sport/football/rss.xml in football or 
-https://feeds.bbci.co.uk/news/technology/rss.xml in technology and alot more .
-- First we start with schedule trigger which is responsible for starting the execution after an interval of time let's say 2 sec .
-- Then the node RSS read reads the whole news in the site all at once .
-- Remoce dublicates node (from it's name ) it remove the dublicated news using it's link and the link is in the output from the previous node .
-- Then we go into a loop over items to send each item seperated from the other items so we don't send all news at one time .
-- The node wait make a period of time between sending the nodes so the nodes send in the telegram chat slowly and seperated .
-- The last node is send a text message in telegram which is connected with a bot and a chat ID (my chat id in this json file ) and ofcorse it's responsible for sending the items to the chat on telegram .
+# RSS News Automation
 
-## what we have learned from this project 
+- This workflow is used to read news from RSS XML feeds such as:
+  - https://feeds.bbci.co.uk/sport/football/rss.xml (Football)
+  - https://feeds.bbci.co.uk/news/technology/rss.xml (Technology)
+  - and many more.
 
-- what is xml files .
-- what is the difference between the RSS news sites and the normal news sites .
-- new nodes like wait node and loop over item (they are very usefull nodes and i think you will use them in alot of your workflows ).
-- you can also create and edit you xml file on your device with just some words like <title> and <link> don't worry it's super easy .
+- First, we start with the **Schedule Trigger**, which is responsible for starting the workflow execution at a specified time interval (for example, every 2 minutes).
 
->[!NOTE]
->There are some data in workflow.json in this folder have been removed .
->This work flow is just a basic for RSS News Reader models you can build and add your own nodes to make it more usefull and productive .
-### Thanks !
+- Then, the **RSS Read** node reads all the news articles from the RSS feed at once.
+
+- The **Remove Duplicates** node (as its name suggests) removes duplicate news articles by comparing their **link**, which is provided by the previous node.
+
+- Next, we use the **Loop Over Items** node to process and send each news article individually instead of sending all of them at the same time.
+
+- The **Wait** node adds a delay between each message, allowing the news articles to be sent to the Telegram chat one by one.
+
+- Finally, the **Telegram** node sends a text message using a Telegram bot and a Chat ID (the Chat ID has been removed from the shared `workflow.json` file). This node is responsible for delivering the news articles to the Telegram chat.
+
+## What Have We Learned from This Project?
+
+- What RSS XML feeds are.
+- The difference between RSS news feeds and regular news websites.
+- How to use useful nodes such as **Wait** and **Loop Over Items** (they are very useful nodes that you will likely use in many of your workflows).
+- How to create and edit your own XML RSS feed using simple XML tags such as `<title>` and `<link>`. Don't worry—it's much easier than it looks.
+
+> [!NOTE]
+> Some sensitive data has been removed from the `workflow.json` file in this repository.
+>
+> This workflow is a basic template for an RSS News Reader. Feel free to customize it by adding your own nodes and features to make it more useful and powerful.
+
+### Thanks!
