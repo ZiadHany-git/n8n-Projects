@@ -9,7 +9,13 @@ https://feeds.bbci.co.uk/news/technology/rss.xml in technology and alot more .
 - The last node is send a text message in telegram which is connected with a bot and a chat ID (my chat id in this json file ) and ofcorse it's responsible for sending the items to the chat on telegram .
 
 ## what we have learned from this project 
-1 - what is xml files .
-2- what is the difference between the RSS news sites and the normal news sites .
-3- new nodes like wait node and loop over item (they are very usefull nodes and i think you will use them in alot of your workflows ).
-4- you can also create and edit you xml file on your device with just some words like <title> and <link> don't worry it's super easy .
+
+- what is xml files .
+- what is the difference between the RSS news sites and the normal news sites .
+- new nodes like wait node and loop over item (they are very usefull nodes and i think you will use them in alot of your workflows ).
+- you can also create and edit you xml file on your device with just some words like <title> and <link> don't worry it's super easy .
+
+>[!NOTE]
+>There are some data in workflow.json in this folder have been removed .
+>This work flow is just a basic for RSS News Reader models you can build and add your own nodes to make it more usefull and productive .
+### Thanks !
