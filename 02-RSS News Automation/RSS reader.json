@@ -1,9 +1,9 @@
 {
-  "name": "My workflow 4",
+  "name": "RSS News Automation",
   "nodes": [
     {
       "parameters": {
-        "url": "http://192.168.1.8:8000/news.xml",
+        "url": "http://19",
         "options": {}
       },
       "type": "n8n-nodes-base.rssFeedRead",
@@ -12,7 +12,7 @@
         1104,
         16
       ],
-      "id": "3e0a3afd-35da-4f4a-9599-3ba51c680127",
+      "id": "3e0a3afc680127",
       "name": "RSS Read"
     },
     {
@@ -32,20 +32,20 @@
         896,
         16
       ],
-      "id": "863237a6-14d8-40dd-9cdf-a6e55d63a4fa",
+      "id": "863233a4fa",
       "name": "Schedule Trigger"
     },
     {
       "parameters": {
         "options": {}
       },
-      "type": "n8n-nodes-base.splitInBatches",
+      "type": "n8InBatches",
       "typeVersion": 3,
       "position": [
         944,
         208
       ],
-      "id": "9029da0f-2f42-43e9-9fd3-4a60e9120e9e",
+      "id": "90260e9120e9e",
       "name": "Loop Over Items"
     },
     {
@@ -56,13 +56,13 @@
         1200,
         224
       ],
-      "id": "c6edb2b0-b172-49eb-823a-c31796ea14d1",
+      "id": "c6ed96ea14d1",
       "name": "Wait",
-      "webhookId": "e7a1d18c-0cd3-4bd0-b1d5-bb8f57946aa4"
+      "webhookId": "e7a1d18c57946aa4"
     },
     {
       "parameters": {
-        "chatId": "1695376217",
+        "chatId": "16917",
         "text": "={{ $json.title }}\n{{ $json.content }}",
         "additionalFields": {}
       },
@@ -72,12 +72,12 @@
         1408,
         224
       ],
-      "id": "3c9fc0e4-09ba-4fc2-8a7a-89e69db37858",
+      "id": "3c9f858",
       "name": "Send a text message1",
-      "webhookId": "a81ca08a-aa04-476b-be53-887a1fa804f5",
+      "webhookId": "a81c4f5",
       "credentials": {
         "telegramApi": {
-          "id": "JIUxuyCkKSBAillI",
+          "id": "JIUxlI",
           "name": "Telegram account"
         }
       }
@@ -94,7 +94,7 @@
         1312,
         16
       ],
-      "id": "edde88f4-5e57-4993-b406-4ed44badcd6e",
+      "id": "eddedcd6e",
       "name": "Remove Duplicates"
     }
   ],
@@ -174,12 +174,12 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "fe305230-cb55-4e74-891a-ccbe1165ce1a",
+  "versionId": "fe3ce1a",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "9a07ec676bd37633423090822a51714f25f6b939d605af9ca76fbe86012d6be4"
+    "instanceId": "9a07ec2d6be4"
   },
   "nodeGroups": [],
-  "id": "O0fEvC4l11p2rl9m",
+  "id": "O0fE9m",
   "tags": []
 }
