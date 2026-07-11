@@ -1,0 +1,211 @@
+{
+  "name": "CRM1",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Contact us ",
+        "formDescription": "We'll see your message soon .\nThank you !",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "what is your name?",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "where are you from ?",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "and your Email is ?",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Job"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        -240,
+        -80
+      ],
+      "id": "0d5c377a-86a5-48bb-929e-c06b2d5f2f58",
+      "name": "On form submission",
+      "webhookId": "3c8a9f3b-77d2-4d70-a104-b2ae543a3a12"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1vK3OyG5YMMurm0cmUMBBRcfKFAqsNWUEJ0HQS8JBbII",
+          "mode": "list",
+          "cachedResultName": "sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1vK3OyG5YMMurm0cmUMBBRcfKFAqsNWUEJ0HQS8JBbII/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1vK3OyG5YMMurm0cmUMBBRcfKFAqsNWUEJ0HQS8JBbII/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json[\"what is your name?\"] }}",
+            "Country": "={{ $json[\"where are you from ?\"] }}",
+            "Email": "={{ $json[\"and your Email is ?\"] }}",
+            "Job": "={{ $json.Job }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Country",
+              "displayName": "Country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Job",
+              "displayName": "Job",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -32,
+        -80
+      ],
+      "id": "be78f023-55d1-4693-b11b-f9d7a1f0317f",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "VyejWRbHfnDT3Esy",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "1695376217",
+        "text": "=!Notification!\n\nthere is a new client \n\nName :{{ $json.Name }}\n\nCountry :{{ $json.Country }}\n\nEmail: {{ $json.Email }}\n\nJob :{{ $json.Job }}\nDo you want to send the offer ?",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Yes",
+                    "additionalFields": {
+                      "callback_data": "={{ $json.Email }}"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "No",
+                    "additionalFields": {
+                      "callback_data": "no"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        176,
+        -80
+      ],
+      "id": "f8026de7-b2ee-427c-abc9-6d796774a21b",
+      "name": "Send a text message",
+      "webhookId": "ac0f5e04-4317-4ca7-9deb-28eda858b56f",
+      "credentials": {
+        "telegramApi": {
+          "id": "JIUxuyCkKSBAillI",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "e2752552-9807-4829-9813-0cec99a40f06",
+  "meta": {
+    "instanceId": "9a07ec676bd37633423090822a51714f25f6b939d605af9ca76fbe86012d6be4"
+  },
+  "nodeGroups": [],
+  "id": "7PEcRiP4i2BxJHj0",
+  "tags": []
+}

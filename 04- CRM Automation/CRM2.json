@@ -1,0 +1,183 @@
+{
+  "name": "CRM2",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "callback_query"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -368,
+        256
+      ],
+      "id": "8d7b322b-ece4-4ec6-a264-73bdb7507086",
+      "name": "Telegram Trigger",
+      "webhookId": "c0fb3136-92c9-4d02-847f-805da7661253",
+      "credentials": {
+        "telegramApi": {
+          "id": "JIUxuyCkKSBAillI",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.callback_query.message.reply_markup.inline_keyboard[0][0].callback_data }}",
+        "subject": "the form",
+        "emailType": "text",
+        "message": "you are denied",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        176,
+        384
+      ],
+      "id": "7ba2099c-9c82-4a92-8163-3282da118521",
+      "name": "Send a message1",
+      "webhookId": "bc033373-6abb-40f8-bed7-f28194d11c0e",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "DU6Kf0mnSwwPRpn6",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.callback_query.data }}",
+                    "rightValue": "@",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "6ce6b44d-f62e-4d01-b543-7bbaa1d2ad28"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "fff9a782-d315-46ee-a965-13b985d84b29",
+                    "leftValue": "={{ $json.callback_query.data }}",
+                    "rightValue": "no",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -96,
+        288
+      ],
+      "id": "3227271c-a076-4cb2-9043-41163b5b662a",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.callback_query.message.reply_markup.inline_keyboard[0][0].callback_data }}",
+        "subject": "the form",
+        "emailType": "text",
+        "message": "hellow you are accepted ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        160,
+        224
+      ],
+      "id": "4f471116-a86c-45c9-881b-296b7895753f",
+      "name": "Send a message",
+      "webhookId": "5c81b999-8c1c-46b5-ac7c-75c10e6541ef",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "DU6Kf0mnSwwPRpn6",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "01308599-e490-46a3-abb0-3c52f413987e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9a07ec676bd37633423090822a51714f25f6b939d605af9ca76fbe86012d6be4"
+  },
+  "nodeGroups": [],
+  "id": "kXwS5RXGjviMpW58",
+  "tags": []
+}
