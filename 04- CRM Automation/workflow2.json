@@ -1,5 +1,5 @@
 {
-  "name": "CRM2",
+  "name": "workflow2",
   "nodes": [
     {
       "parameters": {
@@ -14,12 +14,12 @@
         -368,
         256
       ],
-      "id": "8d7b322b-ece4-4ec6-a264-73bdb7507086",
+      "id": "8d7b07086",
       "name": "Telegram Trigger",
-      "webhookId": "c0fb3136-92c9-4d02-847f-805da7661253",
+      "webhookId": "c0fb53",
       "credentials": {
         "telegramApi": {
-          "id": "JIUxuyCkKSBAillI",
+          "id": "JIUxllI",
           "name": "Telegram account"
         }
       }
@@ -38,12 +38,12 @@
         176,
         384
       ],
-      "id": "7ba2099c-9c82-4a92-8163-3282da118521",
+      "id": "7ba521",
       "name": "Send a message1",
-      "webhookId": "bc033373-6abb-40f8-bed7-f28194d11c0e",
+      "webhookId": "bc0333d11c0e",
       "credentials": {
         "gmailOAuth2": {
-          "id": "DU6Kf0mnSwwPRpn6",
+          "id": "DUpn6",
           "name": "Gmail account"
         }
       }
@@ -68,7 +68,7 @@
                       "type": "string",
                       "operation": "contains"
                     },
-                    "id": "6ce6b44d-f62e-4d01-b543-7bbaa1d2ad28"
+                    "id": "6ce61d2ad28"
                   }
                 ],
                 "combinator": "and"
@@ -84,7 +84,7 @@
                 },
                 "conditions": [
                   {
-                    "id": "fff9a782-d315-46ee-a965-13b985d84b29",
+                    "id": "fffd84b29",
                     "leftValue": "={{ $json.callback_query.data }}",
                     "rightValue": "no",
                     "operator": {
@@ -106,7 +106,7 @@
         -96,
         288
       ],
-      "id": "3227271c-a076-4cb2-9043-41163b5b662a",
+      "id": "32272715b662a",
       "name": "Switch"
     },
     {
@@ -123,12 +123,12 @@
         160,
         224
       ],
-      "id": "4f471116-a86c-45c9-881b-296b7895753f",
+      "id": "4f45753f",
       "name": "Send a message",
-      "webhookId": "5c81b999-8c1c-46b5-ac7c-75c10e6541ef",
+      "webhookId": "5c81e6541ef",
       "credentials": {
         "gmailOAuth2": {
-          "id": "DU6Kf0mnSwwPRpn6",
+          "id": "DUpn6",
           "name": "Gmail account"
         }
       }
@@ -172,12 +172,12 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "01308599-e490-46a3-abb0-3c52f413987e",
+  "versionId": "0413987e",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "9a07ec676bd37633423090822a51714f25f6b939d605af9ca76fbe86012d6be4"
+    "instanceId": "9a07ec012d6be4"
   },
   "nodeGroups": [],
-  "id": "kXwS5RXGjviMpW58",
+  "id": "kpW58",
   "tags": []
 }
