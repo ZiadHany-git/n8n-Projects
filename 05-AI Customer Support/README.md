@@ -31,9 +31,3 @@
 
 > [!TIP]
 > I hope this guide was useful to you. Thanks for reading!
-
- │
- ▼
-IF
-├── Answer Found → Send to Customer
-└── No Answer → Notify Human Support
