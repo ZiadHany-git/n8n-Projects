@@ -32,22 +32,6 @@
 > [!TIP]
 > I hope this guide was useful to you. Thanks for reading!
 
-### Architecture
-Customer
-    │
-    ▼
-Telegram
-    │
-    ▼
-AI Agent
- ┌──┴─────────────┐
- │                │
-LLM          Qdrant
- │                │
-Memory      Embeddings
- │
- ▼
-Telegram Reply
  │
  ▼
 IF
