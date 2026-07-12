@@ -20,11 +20,11 @@
         256,
         224
       ],
-      "id": "bc6648f9-b2ca-4acf-955a-662973580ee1",
+      "id": "bc66580ee1",
       "name": "Qdrant Vector Store",
       "credentials": {
         "qdrantApi": {
-          "id": "cQ6OTQpAnFtczXVT",
+          "id": "cQ6OXVT",
           "name": "Qdrant account"
         }
       }
@@ -40,7 +40,7 @@
         96,
         256
       ],
-      "id": "c5a126ff-0342-4320-a435-f17342c82415",
+      "id": "c5a82415",
       "name": "Simple Memory"
     },
     {
@@ -54,11 +54,11 @@
         -48,
         240
       ],
-      "id": "b953155f-1f50-4249-bf7b-5337ce4a06f0",
+      "id": "b906f0",
       "name": "Google Gemini Chat Model",
       "credentials": {
         "googlePalmApi": {
-          "id": "RnQqohJAwT1H95Z7",
+          "id": "RnZ7",
           "name": "Google Gemini(PaLM) Api account"
         }
       }
@@ -76,12 +76,12 @@
         -224,
         0
       ],
-      "id": "b942a40a-315c-4f3f-9423-a86468aa9afc",
+      "id": "b94aa9afc",
       "name": "Telegram Trigger",
-      "webhookId": "55ce90ca-d4d8-44fa-88a6-18ac9613d018",
+      "webhookId": "55ce3d018",
       "credentials": {
         "telegramApi": {
-          "id": "JIUxuyCkKSBAillI",
+          "id": "JIillI",
           "name": "Telegram account"
         }
       }
@@ -94,11 +94,11 @@
         256,
         400
       ],
-      "id": "4d2c46e9-72a9-4b80-adef-1b0dddb6b63d",
+      "id": "4d6b63d",
       "name": "Embeddings Google Gemini",
       "credentials": {
         "googlePalmApi": {
-          "id": "RnQqohJAwT1H95Z7",
+          "id": "RnZ7",
           "name": "Google Gemini(PaLM) Api account"
         }
       }
@@ -115,12 +115,12 @@
         416,
         0
       ],
-      "id": "bcaf8bf3-bab7-4639-9e9a-6cc56e876a4f",
+      "id": "bca6a4f",
       "name": "Send a text message",
-      "webhookId": "024ff92d-245c-4950-a19d-846829764ef6",
+      "webhookId": "024ff4ef6",
       "credentials": {
         "telegramApi": {
-          "id": "JIUxuyCkKSBAillI",
+          "id": "JIUlI",
           "name": "Telegram account"
         }
       }
@@ -137,7 +137,7 @@
         48,
         0
       ],
-      "id": "754efb71-10a9-43db-9966-2569dd694eee",
+      "id": "75eee",
       "name": "AI Agent"
     },
     {
@@ -151,7 +151,7 @@
           },
           "conditions": [
             {
-              "id": "70b0510f-4120-49aa-a682-88f7a5ebf454",
+              "id": "70ebf454",
               "leftValue": "={{ $json.result.text }}",
               "rightValue": "I couldn't find the answer ",
               "operator": {
@@ -170,7 +170,7 @@
         624,
         0
       ],
-      "id": "4e27b649-dfd6-4eaa-9347-929ac26cfcc8",
+      "id": "4e276cfcc8",
       "name": "If"
     },
     {
@@ -187,12 +187,12 @@
         880,
         -80
       ],
-      "id": "03ac7155-7049-4cc6-b289-513869897e0e",
+      "id": "03a897e0e",
       "name": "Send a message",
-      "webhookId": "bb23824c-3d24-4a8d-a18d-e46aeb9c2e3e",
+      "webhookId": "bb2e3e",
       "credentials": {
         "gmailOAuth2": {
-          "id": "DU6Kf0mnSwwPRpn6",
+          "id": "DUn6",
           "name": "Gmail account"
         }
       }
@@ -295,12 +295,12 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "76753bb1-58ff-45ba-991d-a015ff7dcc1e",
+  "versionId": "767ff7dcc1e",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "9a07ec676bd37633423090822a51714f25f6b939d605af9ca76fbe86012d6be4"
+    "instanceId": "9a07ec676fbe86012d6be4"
   },
   "nodeGroups": [],
-  "id": "6nNl6DFXH2kxP5lP",
+  "id": "6nN5lP",
   "tags": []
 }
