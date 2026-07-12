@@ -18,11 +18,11 @@
         -240,
         112
       ],
-      "id": "f810175b-90b2-4c9a-9bcf-ef895422e2b3",
+      "id": "f81012e2b3",
       "name": "Qdrant Vector Store",
       "credentials": {
         "qdrantApi": {
-          "id": "cQ6OTQpAnFtczXVT",
+          "id": "cQXVT",
           "name": "Qdrant account"
         }
       }
@@ -38,7 +38,7 @@
         -496,
         112
       ],
-      "id": "8faf43cf-bd52-45ab-9474-054732daa2b5",
+      "id": "8faf43c2b5",
       "name": "Read/Write Files from Disk"
     },
     {
@@ -53,7 +53,7 @@
         -112,
         320
       ],
-      "id": "cc2e7f66-018b-4b0d-84cb-d5079b1b200f",
+      "id": "cc2e1b200f",
       "name": "Default Data Loader"
     },
     {
@@ -64,7 +64,7 @@
         -672,
         112
       ],
-      "id": "052cc4e3-5bc2-45f1-a3d5-b19fb89961a5",
+      "id": "052cc9961a5",
       "name": "When clicking ‘Execute workflow’"
     },
     {
@@ -75,11 +75,11 @@
         -288,
         336
       ],
-      "id": "d78125ff-f1d4-4822-b473-9701e8920539",
+      "id": "d7920539",
       "name": "Embeddings Google Gemini",
       "credentials": {
         "googlePalmApi": {
-          "id": "RnQqohJAwT1H95Z7",
+          "id": "Rn95Z7",
           "name": "Google Gemini(PaLM) Api account"
         }
       }
@@ -138,12 +138,12 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "5820b928-4cc8-4df3-8bbe-74dc9cbd4a6f",
+  "versionId": "58cbd4a6f",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "9a07ec676bd37633423090822a51714f25f6b939d605af9ca76fbe86012d6be4"
+    "instanceId": "9a07ec676012d6be4"
   },
   "nodeGroups": [],
-  "id": "cKwqRjXjmYhGxDQj",
+  "id": "cKxDQj",
   "tags": []
 }
