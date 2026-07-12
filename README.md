@@ -10,4 +10,5 @@ A collection of beginner automation projects built while learning n8n.
 | 02 | Telegram Bot| ✅ |
 | 03 | RSS News Automation | ✅ |
 | 04 | CRM Automation | ✅ |
+| 05 | AI customer support | ✅ |
 To be continued 
