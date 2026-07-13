@@ -1,5 +1,5 @@
 {
-  "name": "tiktok uploader1",
+  "name": "workflow1",
   "nodes": [
     {
       "parameters": {},
@@ -9,7 +9,7 @@
         0,
         0
       ],
-      "id": "eabed986-0159-4ed4-8e0c-2f990fc94827",
+      "id": "eabc94827",
       "name": "When clicking ‘Execute workflow’"
     },
     {
@@ -17,27 +17,27 @@
         "assignments": {
           "assignments": [
             {
-              "id": "9a3e828b-d33b-4436-9cc4-e90520d3cc7d",
+              "id": "9a3e828d3cc7d",
               "name": "client_key",
-              "value": "sbawqj23dot29r5xpx",
+              "value": "sba5xpx",
               "type": "string"
             },
             {
-              "id": "46fcfc8c-ea17-41ac-a6a7-044ed4f8a62c",
+              "id": "46a62c",
               "name": "scope",
               "value": "user.info.basic,video.upload",
               "type": "string"
             },
             {
-              "id": "fa59e2fb-4eae-47c2-80e1-64954cd89e31",
+              "id": "fa5989e31",
               "name": "state",
-              "value": 123456,
+              "value": 156486,
               "type": "number"
             },
             {
-              "id": "46ab694f-9c88-4a6c-abf7-4002910253e9",
+              "id": "46ab253e9",
               "name": "redirect_uri",
-              "value": "https://donation-matriarch-although.ngrok-free.dev/webhook-test/tiktok-callback",
+              "value": "https://",
               "type": "string"
             }
           ]
@@ -50,7 +50,7 @@
         208,
         0
       ],
-      "id": "4bbb37cc-f94e-47c7-a2d8-a9467b8122b3",
+      "id": "4bbb122b3",
       "name": "Edit Fields"
     },
     {
@@ -64,9 +64,9 @@
         -16,
         224
       ],
-      "id": "37e5a90e-27c7-4e3d-8a62-3073d3ba2d9a",
+      "id": "37e2d9a",
       "name": "Webhook",
-      "webhookId": "b99fddb8-7a63-4134-93c8-27de6310ab5f"
+      "webhookId": "b9ab5f"
     },
     {
       "parameters": {
@@ -78,24 +78,24 @@
         416,
         0
       ],
-      "id": "34cd8c33-d90c-4221-9d93-de2d7308049e",
+      "id": "34cd8049e",
       "name": "Code in JavaScript"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "https://open.tiktokapis.com/v2/oauth/token/",
+        "url": "https://open.tiktokapis.com//",
         "sendBody": true,
         "contentType": "form-urlencoded",
         "bodyParameters": {
           "parameters": [
             {
               "name": "client_key",
-              "value": "sbawqj23dot29r5xpx"
+              "value": "sbxpx"
             },
             {
               "name": "client_secret",
-              "value": "5ymqkP1fhCskDNDl5XVi7tzazJ4IbJPK"
+              "value": "5ymqIbJPK"
             },
             {
               "name": "code",
@@ -107,7 +107,7 @@
             },
             {
               "name": "redirect_uri",
-              "value": "https://donation-matriarch-although.ngrok-free.dev/webhook-test/tiktok-callback"
+              "value": "https:/"
             }
           ]
         },
@@ -119,7 +119,7 @@
         192,
         224
       ],
-      "id": "b630b621-98d0-41ea-ba5d-cb880f596774",
+      "id": "b636774",
       "name": "HTTP Request"
     }
   ],
@@ -165,11 +165,11 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "451450e9-173c-4ca1-a6ad-b646d60845b3",
+  "versionId": "45145b3",
   "meta": {
-    "instanceId": "9a07ec676bd37633423090822a51714f25f6b939d605af9ca76fbe86012d6be4"
+    "instanceId": "9a0712d6be4"
   },
   "nodeGroups": [],
-  "id": "c4bmsOFuNdUj53iM",
+  "id": "c4M",
   "tags": []
 }
