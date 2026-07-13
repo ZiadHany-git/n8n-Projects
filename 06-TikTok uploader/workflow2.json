@@ -1,5 +1,5 @@
 {
-  "name": "Tiktok uploader2",
+  "name": "workflow2",
   "nodes": [
     {
       "parameters": {
@@ -18,7 +18,7 @@
         -416,
         224
       ],
-      "id": "92740388-f1f5-49db-86a4-fcfa3217a3c9",
+      "id": "927a3c9",
       "name": "Schedule Trigger"
     },
     {
@@ -31,7 +31,7 @@
         -64,
         0
       ],
-      "id": "977832fa-077a-402e-9196-40adf521c53f",
+      "id": "977f521c53f",
       "name": "Code in JavaScript"
     },
     {
@@ -44,7 +44,7 @@
         144,
         0
       ],
-      "id": "1b823f8d-b1be-4058-998e-6f2a37c7f855",
+      "id": "1b827c7f855",
       "name": "Code in JavaScript1"
     },
     {
@@ -58,13 +58,13 @@
         352,
         0
       ],
-      "id": "c12874b9-6b88-42f3-98c6-61ac61ff8c31",
+      "id": "c12861ff8c31",
       "name": "Read/Write Files from Disk"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.cloudinary.com/v1_1/svxnzi9p/image/upload",
+        "url": "https://api.cloudinary.com",
         "sendBody": true,
         "contentType": "multipart-form-data",
         "bodyParameters": {
@@ -76,7 +76,7 @@
             },
             {
               "name": "upload_preset",
-              "value": "rojixsxi"
+              "value": "YOUR_UPLOAD_PRESET"
             }
           ]
         },
@@ -88,7 +88,7 @@
         -192,
         224
       ],
-      "id": "cf39ab2b-7893-44c1-9e01-5b2ba78dcb4a",
+      "id": "cf39cb4a",
       "name": "HTTP Request"
     },
     {
@@ -102,7 +102,7 @@
         -16,
         224
       ],
-      "id": "55ef3e6a-f754-4060-bac5-8e8f2b9b1bf3",
+      "id": "55efb1bf3",
       "name": "Aggregate"
     },
     {
@@ -115,7 +115,7 @@
         176,
         224
       ],
-      "id": "505e40e7-00d1-4ef9-874d-97ae8497922b",
+      "id": "505e4922b",
       "name": "Code in JavaScript2"
     },
     {
@@ -129,7 +129,7 @@
         -192,
         432
       ],
-      "id": "17d7c15f-3a64-4063-a424-7f8aca14af81",
+      "id": "17d4af81",
       "name": "Read/Write Files from Disk1"
     },
     {
@@ -142,7 +142,7 @@
         192,
         432
       ],
-      "id": "1ef3917a-327f-417c-89db-4759f7c925a3",
+      "id": "1ef3f7c925a3",
       "name": "Code in JavaScript3"
     },
     {
@@ -156,7 +156,7 @@
         0,
         432
       ],
-      "id": "ff6085d2-49d7-4d04-8c19-4f94451a2aa7",
+      "id": "ff60851a2aa7",
       "name": "Extract from File"
     },
     {
@@ -171,7 +171,7 @@
         400,
         304
       ],
-      "id": "9359278a-746c-4f23-a09d-8ecb83e6d8e1",
+      "id": "935927b83e6d8e1",
       "name": "Merge"
     },
     {
@@ -183,7 +183,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "Bearer act.nuR2Yr3Wx9WJDpBRPhW89zhadebGuYbZvcp1KbxUHcV1gfjZ6ciUMe7UTySN!4826.s1"
+              "value": "Bearer YOUR_TIKTOK_ACCESS_TOKEN"
             },
             {
               "name": "Content-Type",
@@ -210,7 +210,7 @@
         656,
         304
       ],
-      "id": "83429600-e6bb-4677-b81c-87c9e4b3f032",
+      "id": "834293f032",
       "name": "HTTP Request1"
     }
   ],
@@ -349,12 +349,12 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "324e61d6-2ab0-4bf6-9b6e-0725c565db8d",
+  "versionId": "324e5db8d",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "9a07ec676bd37633423090822a51714f25f6b939d605af9ca76fbe86012d6be4"
+    "instanceId": "9a07ec012d6be4"
   },
   "nodeGroups": [],
-  "id": "QE2ml8L50WDXpSkU",
+  "id": "QEU",
   "tags": []
 }
