@@ -1,0 +1,360 @@
+{
+  "name": "Tiktok uploader2",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds",
+              "secondsInterval": 1
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -416,
+        224
+      ],
+      "id": "92740388-f1f5-49db-86a4-fcfa3217a3c9",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "const fs = require('fs');\n\nconst folders = fs.readdirSync('/files/files/Pending', {\n  withFileTypes: true,\n});\n\nreturn folders\n  .filter(folder => folder.isDirectory())\n  .map(folder => ({\n    json: {\n      folderName: folder.name,\n    },\n  }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -64,
+        0
+      ],
+      "id": "977832fa-077a-402e-9196-40adf521c53f",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst path = require('path');\n\nconst folder = $input.first().json.folderName;\n\nconst folderPath = `/files/files/Pending/${folder}`;\n\nconst files = fs.readdirSync(folderPath)\n  .filter(file => /\\.(png|jpg|jpeg)$/i.test(file));\n\nreturn files.map(file => ({\n  json: {\n    folder,\n    fileName: file,\n    fullPath: path.join(folderPath, file),\n  },\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        144,
+        0
+      ],
+      "id": "1b823f8d-b1be-4058-998e-6f2a37c7f855",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "fileSelector": "={{ $json.fullPath }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        352,
+        0
+      ],
+      "id": "c12874b9-6b88-42f3-98c6-61ac61ff8c31",
+      "name": "Read/Write Files from Disk"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.cloudinary.com/v1_1/svxnzi9p/image/upload",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "data"
+            },
+            {
+              "name": "upload_preset",
+              "value": "rojixsxi"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -192,
+        224
+      ],
+      "id": "cf39ab2b-7893-44c1-9e01-5b2ba78dcb4a",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -16,
+        224
+      ],
+      "id": "55ef3e6a-f754-4060-bac5-8e8f2b9b1bf3",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "jsCode": "const urls = $input.first().json.data.map(item => item.secure_url);\n\nreturn [\n  {\n    json: {\n      photo_images: urls\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        176,
+        224
+      ],
+      "id": "505e40e7-00d1-4ef9-874d-97ae8497922b",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "fileSelector": "/files/captions.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        -192,
+        432
+      ],
+      "id": "17d7c15f-3a64-4063-a424-7f8aca14af81",
+      "name": "Read/Write Files from Disk1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const captions = $input.first().json.data;\n\nconst random =\n  captions[Math.floor(Math.random() * captions.length)];\n\nreturn [\n  {\n    json: random\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        192,
+        432
+      ],
+      "id": "1ef3917a-327f-417c-89db-4759f7c925a3",
+      "name": "Code in JavaScript3"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        432
+      ],
+      "id": "ff6085d2-49d7-4d04-8c19-4f94451a2aa7",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        400,
+        304
+      ],
+      "id": "9359278a-746c-4f23-a09d-8ecb83e6d8e1",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://open.tiktokapis.com/v2/post/publish/content/init/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer act.nuR2Yr3Wx9WJDpBRPhW89zhadebGuYbZvcp1KbxUHcV1gfjZ6ciUMe7UTySN!4826.s1"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"media_type\": \"PHOTO\",\n  \"post_mode\": \"MEDIA_UPLOAD\",\n  \"post_info\": {\n    \"title\": \"={{ $json.caption }}\",\n    \"description\": \"={{ $json.caption }}\",\n    \"privacy_level\": \"SELF_ONLY\",\n    \"disable_comment\": false,\n    \"disable_duet\": false,\n    \"disable_stitch\": false\n  },\n  \"source_info\": {\n    \"source\": \"PULL_FROM_URL\",\n    \"photo_cover_index\": 0,\n    \"photo_images\": \"={{ $json.photo_images }}\"\n  }\n}",
+        "options": {
+          "allowUnauthorizedCerts": false,
+          "response": {
+            "response": {
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        656,
+        304
+      ],
+      "id": "83429600-e6bb-4677-b81c-87c9e4b3f032",
+      "name": "HTTP Request1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Read/Write Files from Disk1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk1": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "324e61d6-2ab0-4bf6-9b6e-0725c565db8d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9a07ec676bd37633423090822a51714f25f6b939d605af9ca76fbe86012d6be4"
+  },
+  "nodeGroups": [],
+  "id": "QE2ml8L50WDXpSkU",
+  "tags": []
+}

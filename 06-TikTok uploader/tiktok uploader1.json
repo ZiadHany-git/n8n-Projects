@@ -1,0 +1,175 @@
+{
+  "name": "tiktok uploader1",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "eabed986-0159-4ed4-8e0c-2f990fc94827",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9a3e828b-d33b-4436-9cc4-e90520d3cc7d",
+              "name": "client_key",
+              "value": "sbawqj23dot29r5xpx",
+              "type": "string"
+            },
+            {
+              "id": "46fcfc8c-ea17-41ac-a6a7-044ed4f8a62c",
+              "name": "scope",
+              "value": "user.info.basic,video.upload",
+              "type": "string"
+            },
+            {
+              "id": "fa59e2fb-4eae-47c2-80e1-64954cd89e31",
+              "name": "state",
+              "value": 123456,
+              "type": "number"
+            },
+            {
+              "id": "46ab694f-9c88-4a6c-abf7-4002910253e9",
+              "name": "redirect_uri",
+              "value": "https://donation-matriarch-although.ngrok-free.dev/webhook-test/tiktok-callback",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "4bbb37cc-f94e-47c7-a2d8-a9467b8122b3",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "path": "tiktok-callback",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -16,
+        224
+      ],
+      "id": "37e5a90e-27c7-4e3d-8a62-3073d3ba2d9a",
+      "name": "Webhook",
+      "webhookId": "b99fddb8-7a63-4134-93c8-27de6310ab5f"
+    },
+    {
+      "parameters": {
+        "jsCode": "const clientKey = $json.client_key;\nconst redirectUri = encodeURIComponent($json.redirect_uri);\nconst scope = encodeURIComponent($json.scope);\nconst state = $json.state;\n\nconst authUrl =\n`https://www.tiktok.com/v2/auth/authorize/?client_key=${clientKey}&response_type=code&scope=${scope}&redirect_uri=${redirectUri}&state=${state}`;\n\nreturn [\n  {\n    json: {\n      authorization_url: authUrl\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "34cd8c33-d90c-4221-9d93-de2d7308049e",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://open.tiktokapis.com/v2/oauth/token/",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "client_key",
+              "value": "sbawqj23dot29r5xpx"
+            },
+            {
+              "name": "client_secret",
+              "value": "5ymqkP1fhCskDNDl5XVi7tzazJ4IbJPK"
+            },
+            {
+              "name": "code",
+              "value": "={{$json.query.code}}"
+            },
+            {
+              "name": "grant_type",
+              "value": "authorization_code"
+            },
+            {
+              "name": "redirect_uri",
+              "value": "https://donation-matriarch-although.ngrok-free.dev/webhook-test/tiktok-callback"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        192,
+        224
+      ],
+      "id": "b630b621-98d0-41ea-ba5d-cb880f596774",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "451450e9-173c-4ca1-a6ad-b646d60845b3",
+  "meta": {
+    "instanceId": "9a07ec676bd37633423090822a51714f25f6b939d605af9ca76fbe86012d6be4"
+  },
+  "nodeGroups": [],
+  "id": "c4bmsOFuNdUj53iM",
+  "tags": []
+}
